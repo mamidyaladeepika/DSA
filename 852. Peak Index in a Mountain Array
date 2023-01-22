@@ -1,0 +1,19 @@
+//using binary search
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int l=0,h=arr.size()-1,r;
+        while(l<=h){
+            int mid=(l+h)/2;
+            if(arr[mid]>arr[mid+1]&&arr[mid]>arr[mid-1]){//checking whether the mid element is greater than pervious and next element in the array
+                r=mid;
+                break;
+            }
+            else if(arr[mid]<arr[mid+1])//if mid element is less than the next element in the array than move lower boundary pointer to mid+1
+            l=mid+1;
+            else//if mid element is less than perviouselement than move the upper boundary pointer to mid-1
+            h=mid-1;
+        }
+        return r;
+    }
+};
